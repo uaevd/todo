@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 
 import { PageTitle } from 'components/atoms/PageTitle';
 import { Button } from 'components/atoms/Button';
@@ -29,6 +30,8 @@ const ButtonContainer = styled.div`
 `;
 
 export const ToDoInput = () => {
+    const navigate = useNavigate();
+
     return (
         <Container>
             <Contents>
@@ -36,7 +39,7 @@ export const ToDoInput = () => {
                 <InputToDo />
             </Contents>
             <ButtonContainer>
-                <Button label="Close" />
+                <Button label="Close" onClick={() => navigate('/')} />
             </ButtonContainer>
         </Container>
     );
