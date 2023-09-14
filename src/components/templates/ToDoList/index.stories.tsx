@@ -17,4 +17,8 @@ export default {
 
 type Story = StoryObj<typeof ToDoList>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    args: {
+        toDoList: ['Study React.js', 'Study CDD', 'Create To-Do List App'],
+    },
+};

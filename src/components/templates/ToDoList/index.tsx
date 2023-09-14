@@ -35,7 +35,12 @@ const ButtonContainer = styled.div`
     z-index: 1;
 `;
 
-export const ToDoList = () => {
+interface Props {
+    readonly toDoList: ReadonlyArray<string>;
+    readonly onDelete?: (toDo: string) => void;
+}
+
+export const ToDoList = ({ toDoList, onDelete }: Props) => {
     const navigate = useNavigate();
 
     return (
@@ -43,8 +48,15 @@ export const ToDoList = () => {
             <Contents>
                 <PageTitle title="To-Do List" />
                 <ToDoListContainer>
-                    <ToDoItem label="Study React.js" />
-                    <ToDoItem label="Study CDD" />
+                    {toDoList.map((toDo) => (
+                        <ToDoItem
+                            key={toDo}
+                            label={toDo}
+                            onDelete={() => {
+                                if (typeof onDelete === 'function') onDelete(toDo);
+                            }}
+                        />
+                    ))}
                 </ToDoListContainer>
                 <ButtonContainer>
                     <Button
