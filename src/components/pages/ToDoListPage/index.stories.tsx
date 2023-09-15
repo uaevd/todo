@@ -1,12 +1,12 @@
 import { BrowserRouter } from 'react-router-dom';
+import { ToDoListContextProvider } from 'contexts/ToDoList';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { InputToDo } from '.';
-import { ToDoListContextProvider } from 'contexts/ToDoList';
+import { ToDoListPage } from '.';
 
 export default {
-    title: 'Organisms/InputToDo',
-    component: InputToDo,
+    title: 'Pages/ToDoListPage',
+    component: ToDoListPage,
     decorators: [
         (Story) => (
             <ToDoListContextProvider>
@@ -16,8 +16,8 @@ export default {
             </ToDoListContextProvider>
         ),
     ],
-} as Meta<typeof InputToDo>;
+} as Meta<typeof ToDoListPage>;
 
-type Story = StoryObj<typeof InputToDo>;
+type Story = StoryObj<typeof ToDoListPage>;
 
 export const Default: Story = {};
