@@ -21,7 +21,9 @@ interface Props {
 export const ToDoListContextProvider = ({ children }: Props) => {
     const [toDoList, setToDoList] = useState(['Study React.js', 'Exercise', 'Read Books']);
 
-    const onAdd = (toDo: string) => setToDoList([...toDoList, toDo]);
+    const onAdd = (toDo: string) => {
+        if (!toDoList.includes(toDo)) setToDoList([...toDoList, toDo]);
+    };
     const onDelete = (toDo: string) => setToDoList(toDoList.filter((item) => item !== toDo));
 
     return (
