@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { ToDoListContext } from 'contexts/ToDoList';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 
@@ -13,17 +14,21 @@ const Container = styled.div`
 
 export const InputToDo = () => {
     const [toDo, setToDo] = useState('');
+    const { onAdd } = useContext(ToDoListContext);
     const navigate = useNavigate();
 
-    const onAdd = () => {
-        setToDo('');
-        navigate('/');
+    const onAddToDo = () => {
+        if (toDo !== '') {
+            onAdd(toDo);
+            setToDo('');
+            navigate('/');
+        }
     };
 
     return (
         <Container>
             <Input value={toDo} placeholder={'Write Your Todo Item...'} onChange={setToDo} />
-            <Button label="Add" color="#304ffe" onClick={onAdd} />
+            <Button label="Add" color="#304ffe" onClick={onAddToDo} />
         </Container>
     );
 };

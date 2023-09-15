@@ -1,4 +1,5 @@
 import { BrowserRouter } from 'react-router-dom';
+import { ToDoListContextProvider } from 'contexts/ToDoList';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { ToDoListPage } from '.';
@@ -8,9 +9,11 @@ export default {
     component: ToDoListPage,
     decorators: [
         (Story) => (
-            <BrowserRouter>
-                <Story />
-            </BrowserRouter>
+            <ToDoListContextProvider>
+                <BrowserRouter>
+                    <Story />
+                </BrowserRouter>
+            </ToDoListContextProvider>
         ),
     ],
 } as Meta<typeof ToDoListPage>;
